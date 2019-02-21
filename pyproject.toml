@@ -23,7 +23,7 @@ python = "^3.7"
 nltk = "^3.4"
 markovify = "^0.7.1"
 regex = "^2019.2"
-#wxPython = "^4.0"
+wxPython = "^4.0"
 
 [tool.poetry.dev-dependencies]
 
