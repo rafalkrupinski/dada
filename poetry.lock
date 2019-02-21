@@ -1,0 +1,69 @@
+[[package]]
+category = "main"
+description = "A simple, extensible Markov chain generator. Uses include generating random semi-plausible sentences based on an existing text."
+name = "markovify"
+optional = false
+python-versions = "*"
+version = "0.7.1"
+
+[package.dependencies]
+unidecode = "*"
+
+[[package]]
+category = "main"
+description = "Natural Language Toolkit"
+name = "nltk"
+optional = false
+python-versions = "*"
+version = "3.4"
+
+[package.dependencies]
+singledispatch = "*"
+six = "*"
+
+[[package]]
+category = "main"
+description = "Alternative regular expression module, to replace re."
+name = "regex"
+optional = false
+python-versions = "*"
+version = "2019.02.21"
+
+[[package]]
+category = "main"
+description = "This library brings functools.singledispatch from Python 3.4 to Python 2.6-3.3."
+name = "singledispatch"
+optional = false
+python-versions = "*"
+version = "3.4.0.3"
+
+[package.dependencies]
+six = "*"
+
+[[package]]
+category = "main"
+description = "Python 2 and 3 compatibility utilities"
+name = "six"
+optional = false
+python-versions = ">=2.6, !=3.0.*, !=3.1.*"
+version = "1.12.0"
+
+[[package]]
+category = "main"
+description = "ASCII transliterations of Unicode text"
+name = "unidecode"
+optional = false
+python-versions = "*"
+version = "1.0.23"
+
+[metadata]
+content-hash = "8ccd301d8d9be8f05f697331b605f13596b0b6a9bb08ed0dea19c8f8d4aaad96"
+python-versions = "^3.7"
+
+[metadata.hashes]
+markovify = ["f016ef58f60a8afb925aa16803538561c4b00375bf0b7f84952c29993805b9a7"]
+nltk = ["286f6797204ffdb52525a1d21ec0a221ec68b8e3fa4f2d25f412ac8e63c70e8d", "e51590c0bf2d9dcb7ce088b03e4f42c94e7cdd2a372c724320dfa8b19de77609"]
+regex = ["532d4fadfbd382b901d9ca33d88caf260bf107b6f9a0828544c5bd5acc9b99b6", "587bd4cad11c7294f89799c45778abca271d7c6668a0e85c41a6dbfa8096f9bb", "9ade5d0b79e9d45fb06be75fd464d39050b81154b592a37114b525a37fddc628", "bfcc1dcfa375087568ad197471fa77a918cc9b10a255b82ffe84ffce9c376d64", "cc9fcd8a9dcdb1e36a6bb8ff50b7b1011ac2cd37d34b5349bf343082004c5cc0", "d2151238f5e333aded35b13b266b4e9d8f5d67846873c5100662f635530e7e0a", "dfec30ec0f66d54d00076b191d18511f08d8638ea37edb48988bbfb598959ed9", "fae7d8fc13ed0384d9adfab38fe10ab6e3440bf66fc4d6229f538fb20909a2c5", "ffd176fb7169bdd7a77e5eaafb43ea17f2bf7bf9889a30040ca51f96db1636be"]
+singledispatch = ["5b06af87df13818d14f08a028e42f566640aef80805c3b50c5056b086e3c2b9c", "833b46966687b3de7f438c761ac475213e53b306740f1abfaa86e1d1aae56aa8"]
+six = ["3350809f0555b11f552448330d0b52d5f24c91a322ea4a15ef22629740f3761c", "d16a0141ec1a18405cd4ce8b4613101da75da0e9a7aec5bdd4fa804d0e0eba73"]
+unidecode = ["092cdf7ad9d1052c50313426a625b717dab52f7ac58f859e09ea020953b1ad8f", "8b85354be8fd0c0e10adbf0675f6dc2310e56fda43fa8fe049123b6c475e52fb"]
