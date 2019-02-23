@@ -1,5 +1,5 @@
 import os
-from typing import List
+import typing
 
 import markovify
 import nltk
@@ -17,45 +17,33 @@ def path_to_str(path: str) -> str:
             return f.read()
 
 
-def generate_from_file(path: str) -> List:
-    raw = path_to_str(path)
-
-    tokens = nltk.word_tokenize(raw)
-
-    return markovify_generate(tokens)
-
-
-def markovify_generate(tokens, max_results=5) -> List:
-    m = markovify.Text(None, state_size=1, parsed_sentences=group_words(tokens))
-    result = []
-
-    for _ in range(100):
-        sentence = m.make_sentence(max_overlap_total=3)
-        if sentence is not None:
-            result.append(sentence)
-            if len(result) == max_results:
-                break
-
-    return result
-
-
-end_of_sentence_re = regex.compile('[;.?!]')
 alpha_re = regex.compile(r'^[\w,–]+$')
 
 
-def group_words(tokens) -> List:
+def generate_from_str(text: str):
+    text = text.lower()
+    words = [
+        [word for word in nltk.word_tokenize(sentence, 'polish') if alpha_re.match(word)]
+        for sentence in nltk.sent_tokenize(text, 'polish')
+    ]
+    return markovify_generate(words)
+
+
+def generate_from_file(path: str) -> typing.List:
+    text = path_to_str(path)
+
+    return generate_from_str(text)
+
+
+def markovify_generate(tokens, max_results=5, max_attempts=100) -> typing.List:
+    m = markovify.Text(None, state_size=1, parsed_sentences=tokens)
     result = []
-    sentence = []
-    for token in tokens:
-        token = token.lower()
-        if end_of_sentence_re.match(token):
-            sentence.append(token)
+    attempts = 0
+
+    while len(result) < max_results and attempts < max_attempts:
+        attempts += 1
+        sentence = m.make_sentence(max_overlap_total=3)
+        if sentence is not None:
             result.append(sentence)
-            sentence = []
-        if not alpha_re.match(token):
-            continue
-        else:
-            sentence.append(token)
-    if len(sentence) != 0:
-        result.append(sentence)
+
     return result
