@@ -5,7 +5,7 @@ from mattes_dada import __version__
 
 
 def test_version():
-    expected_version = '0.2.0'
+    expected_version = '0.2.1'
     assert __version__ == expected_version
     assert get_pyproject_version() == expected_version
 
