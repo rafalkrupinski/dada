@@ -1,1 +1,2 @@
-name='mattes_dada'
+name = 'mattes_dada'
+__version__ = '0.2.0'

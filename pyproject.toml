@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "mattes-dada"
-version = "0.1.0"
+version = "0.2.0"
 description = "Semi-random text generator using Markov chains"
 authors = ["Raphael Krupinski"]
 license = "GPL-3.0"
@@ -24,6 +24,7 @@ markovify = "^0.7.1"
 regex = "^2019.2"
 
 [tool.poetry.dev-dependencies]
+pytest = "^4.3"
 
 [tool.poetry.scripts]
 mdada = 'mattes_dada.cmd:main'
@@ -31,4 +32,3 @@ mdada = 'mattes_dada.cmd:main'
 [build-system]
 requires = ["poetry>=0.12"]
 build-backend = "poetry.masonry.api"
-
