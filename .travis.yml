@@ -1,5 +1,7 @@
 language: python
 python: '3.7'
+dist: xenial # travis/py3.7 workaround
+sudo: true  # travis/py3.7 workaround
 cache: pip
 before_install:
   - pip install poetry
