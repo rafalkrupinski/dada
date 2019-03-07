@@ -25,6 +25,7 @@ regex = "^2019.2"
 
 [tool.poetry.dev-dependencies]
 pytest = "^4.3"
+toml = "^0.10.0"
 
 [tool.poetry.scripts]
 mdada = 'mattes_dada.cmd:main'
