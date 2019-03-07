@@ -1,0 +1,32 @@
+language: python
+python: '3.7'
+cache: pip
+before_install:
+  - pip install poetry
+install:
+  - poetry install -v
+script:
+  - pytest
+before_deploy:
+  - poetry build
+  - poetry config http-basic.pypi $PYPI_USER $PYPI_PASSWORD
+deploy:
+  provider: script
+  script: poetry publish
+  on:
+    tags: true
+env:
+  global:
+    - secure:
+        - "PLidqdonF1C6y3Bho8dFNyyeNSd4o1DpTVn3vFggwdq9hDXybww2ueUXHEjgKB3t0WHNNLTgaQBHJFiC7qh9hsDtLvGHXQ6yc0LtCBIVASQPh/qKlF7iimlHxb/BtwngkiytwcCigWMmx29jtWQ982xl0EL4KeOYe5/wx7Krxnqn/OrbZlsmVuCrY2pnsFJg+VSPfie12572CDJwW6W3GSFYSJ9ke5lfXxFqntYi0jXtKYb7oCTQtBDlNQ6CRf7hOSDavjYC23caqym34wKQ0JEmbwmlX2bbEwzjGnoFq73VdG5ZOqD5DZc/aSR/2bo7Rr3HXyZ42EEB3Fkc4zIgg+mDiczjrUY0ogjBuoWhWlDsElaC/MiOrT2dv+VUvsHDhiZfJczyheFj5JzDgC6ML7SJ+rUAyRDOddpx2WwBPeQigCSLgoAGt/kxpDb6KN60BwcnR9H/4IF8Pm+KMmWMw07fkJHXaNPZ1elL4p1WtS5HYvcWdEwgdshqj6FNUxUsbbE71vb5aYXPOoO4+RgkOaDty2KGnXQxvrKppF2/E5aWvTro1vwtla8NbkohWr/Nf29x6fE6YTjTdgHiaWXS8F1cqhq5qzq+BWBmSuA4AQyZ0PHFiGu1knHXMhazo6KNtuH0FT9Vbtk4VwNdxjQvlmRm5VKVswcieieS27kwMAc="
+        - "eKOUPDiLaKwzEw2I8ajy/dfTh2q/PG4gl8yMjKOPvVboZE/JqZblEMroGBvAM6DtPdzTnStrbuJRSQPl0KA7Y40iXca4kq509+iKqqJPXno3dS9TIB8GgzyNYAoU/Bi9d0Vx24yIxyUcQ1s3tVTyWEHYLAnVTE+y7b4qBorZjNkVBmDbkXSJxoBL7RVibwdDAUaX2iwo24NbaV3XeYO1OiacjMPDpsEdq341MZDzGKkfQ8ur3eJ8s/a5/8qFi0HYTi2hfNM+LclPxr9UNVp4uOagq9DxHIFCtPifYz7D1IzHJCuFx7EVIylMvkTEzrnhXcqrUM1KglibTXSDS36yTcSilTdrY/1P8LG5hlFwkgfv29qQ281ejTfMABdMjqQyrTkcm3yzJhzbhbUH+9XoYFIlffvxkP5Td0VHAYBM0zSYaPewWrToJJLG7wN1eJSuGUPaitBc4TdBgITLupWCwwkntK6MreTkLys149REMoiIaPJXlV8xg4j9OctUpEhExfplgcR41Byjs3wSpXLx7ZIDpfQtB4KEijpmZ2G6mfi0FoZmiZPuEohsiI8D/XtgqQ95C667SVEMoe6j3GuD8r6NCWwPKd3PdiRX2+bJ7zbx2lsUY8xFBhhrNqrIEmrCFyse69ymUlVX+hhQNCfQ6bzLsapoRwwy/+Zjbn5ZHnk="
+
+branches:
+  only:
+    - master
+    - travis
+    - "/^v\\d.*/"
+notifications:
+  email:
+    on_success: change
+    on_failure: always
