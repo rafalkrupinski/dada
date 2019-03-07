@@ -1,3 +1,4 @@
+import json
 import typing
 
 import markovify
@@ -5,18 +6,18 @@ import nltk
 import regex
 from nltk.tokenize.treebank import TreebankWordDetokenizer
 
+# noinspection PyUnresolvedReferences
+import mattes_dada.nltk_data as _
+
 
 class DadaText(markovify.Text):
-    alpha_re = regex.compile(r'^[[:alpha:],–:]+$')
+    alpha_re = regex.compile(r'^[[:alpha:].,–:?!;/…]+$')
     detokenizer = TreebankWordDetokenizer()
 
     def __init__(self, input_text, state_size=1, chain=None, parsed_sentences=None, retain_original=True,
                  lang='english'):
 
         self.language = lang
-
-        if not parsed_sentences:
-            parsed_sentences = self.generate_corpus(input_text)
 
         super().__init__(input_text, state_size, chain, parsed_sentences, retain_original)
 
@@ -56,3 +57,13 @@ class DadaText(markovify.Text):
                 failures += 1
 
         return result
+
+    def to_dict(self):
+        return {
+            "state_size": self.state_size,
+            "chain": list(self.chain.model.items()),
+            "parsed_sentences": self.parsed_sentences if self.retain_original else None
+        }
+
+    def to_json(self):
+        return json.dumps(self.to_dict(), indent=2, sort_keys=True)

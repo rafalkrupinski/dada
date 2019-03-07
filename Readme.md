@@ -3,6 +3,8 @@ Matte's Dada
 
 Semi-random text generator using Markov chains
 
+[![Build Status](https://travis-ci.org/mattesilver/dada.svg?branch=master)](https://travis-ci.org/mattesilver/dada)
+
 Usage
 ==
 
