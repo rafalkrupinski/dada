@@ -4,7 +4,7 @@ version = "0.2.1"
 description = "Semi-random text generator using Markov chains"
 authors = ["Raphael Krupinski"]
 license = "GPL-3.0"
-readme = 'README.md'
+readme = 'Readme.md'
 repository='https://github.com/mattesilver/dada'
 classifiers=[
     "Programming Language :: Python :: 3",
