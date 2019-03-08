@@ -24,7 +24,10 @@ markovify = "^0.7.1"
 regex = "^2019.2"
 
 [tool.poetry.dev-dependencies]
+codecov = "^2.0"
+coverage = "^4.5"
 pytest = "^4.3"
+pytest-cov = "^2.6"
 toml = "^0.10.0"
 
 [tool.poetry.scripts]
