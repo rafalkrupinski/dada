@@ -35,11 +35,6 @@ class DadaText(markovify.Text):
         return DadaText.detokenizer.tokenize(words)
 
     @classmethod
-    def from_tokens(cls, tokens: typing.List[typing.List[str]], state_size=1, chain=None, retain_original: bool = True,
-                    lang='english'):
-        return cls(None, state_size, chain, tokens, retain_original, lang)
-
-    @classmethod
     def from_text_file(cls, path: str, encoding: str = 'utf-8-sig', lang='english'):
         with open(path, "r", encoding=encoding) as f:
             return cls(f.read(), lang=lang)

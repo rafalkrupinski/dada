@@ -9,14 +9,15 @@ _lang = {
 }
 
 
-def _odt_lang(lang: str) -> str:
+# pragma: no cover
+def _nltk_lang(lang: str) -> str:
     return _lang[lang]
 
 
 def load_from_file(path: str, lang) -> model.DadaText:
     path_str: str = os.fspath(path)
     if path_str.endswith('odt'):
-        text = extract_from_odt_file(path, _odt_lang(lang))
-        return model.DadaText(text, lang=lang)
+        text = extract_from_odt_file(path, lang)
+        return model.DadaText(text, lang=_nltk_lang(lang))
     else:
-        return model.DadaText.from_text_file(path, lang=lang)
+        return model.DadaText.from_text_file(path, lang=_nltk_lang(lang))

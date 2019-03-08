@@ -37,10 +37,10 @@ class OdtContentHandler(ElemStackHandeler):
         if name == 'text:p' or name == 'text:h':
             last_text = self.find_last_text()
             if last_text is not None:
-                if regex.match(r'[:alpha:]\s*$', last_text):
+                if regex.match(r'.*[^.]\s*$', last_text):
                     print('Text "' + last_text + '" is missing ending period.')
                     self.target.append('.')
-            if len(self.target) != 0 and self.target[-1] != '\n':
+            if len(self.target) == 0 or self.target[-1] != '\n':
                 self.target.append('\n')
 
     ws = regex.compile(r'^\s+$')
@@ -98,8 +98,7 @@ class OdtContentHandler(ElemStackHandeler):
         return None
 
     def handle_line_break(self):
-        if len(self.target) == 0 or self.target[-1][-1] != '\n':
-            self.target.append('\n')
+        self.target.append('\n')
 
 
 def extract(text: str, language: str = None, default_language=None) -> str:
@@ -109,12 +108,7 @@ def extract(text: str, language: str = None, default_language=None) -> str:
     return ''.join(target)
 
 
-def extract_from_odt_file(path: str, language: str) -> str:
-    if language not in _lang.keys():
-        raise ValueError('Unsupported language', language)
-
-    lang = _lang[language]
-
+def extract_from_odt_file(path: str, lang: str) -> str:
     with open(path, 'rb') as stream:
         zip_stream = zipfile.ZipFile(stream)
         default_lang = extract_default_language(zip_stream.read('styles.xml'))
