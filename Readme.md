@@ -4,7 +4,7 @@ Matte's Dada
 Semi-random text generator using Markov chains
 
 [![Build Status](https://travis-ci.org/mattesilver/dada.svg?branch=master)](https://travis-ci.org/mattesilver/dada)
-![PyPI](https://img.shields.io/pypi/v/mattes-dada.svg?style=plastic)
+[![PyPI](https://img.shields.io/pypi/v/mattes-dada.svg?style=plastic)](https://pypi.org/project/mattes-dada/)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/mattes-dada.svg?style=plastic)
 [![codecov](https://codecov.io/gh/mattesilver/dada/branch/master/graph/badge.svg)](https://codecov.io/gh/mattesilver/dada)
 
