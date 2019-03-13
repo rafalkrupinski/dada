@@ -13,7 +13,7 @@ from tests.mattes_dada import test_odt, test_txt
 class TestDada(TestCase):
 
     def test_version(self):
-        expected_version = '0.2.1'
+        expected_version = '0.2.2'
         assert __version__ == expected_version
         assert TestDada.get_pyproject_version() == expected_version
 

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "mattes-dada"
-version = "0.2.1"
+version = "0.2.2"
 description = "Semi-random text generator using Markov chains"
 authors = ["Raphael Krupinski"]
 license = "GPL-3.0"
